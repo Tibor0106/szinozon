@@ -1,0 +1,42 @@
+.ball {
+  height: 3.5vh;
+  width: 3.5vh;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.ball-color {
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s;
+  background: #00564e;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 2px;
+  color: #fff;
+  margin-top: -55px;
+  margin-left: 25px;
+}
+.ball:hover + .ball-color {
+  visibility: visible;
+}
+.game {
+  background: #bebebe;
+}
+
+.mini {
+  background: #898989;
+  margin-left: 2px;
+  border: 1px solid black;
+  height: 5vh;
+  width: 5vh;
+}
+.mini-1 {
+  background: #898989;
+  margin-left: 2px;
+  border: 1px solid black;
+  height: 2.5vh;
+  width: 2.5vh;
+  padding: 1px;
+  text-align: center;
+  margin-bottom: 1px;
+}
