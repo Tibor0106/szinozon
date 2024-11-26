@@ -65,11 +65,11 @@ export const GameProvider = ({ children }) => {
   const [felfed, setFelfed] = useState(Array(4).fill(0));
   const defaultGameData = {
     selectedColors: getRandomColors(),
-    maxTry: 11,
+    maxTry: 5,
     currentStep: 0,
     gameEnd: false,
     gameEndMessage: "",
-    trys: Array(11)
+    trys: Array(5)
       .fill(null)
       .map(() => ({ colors: [], results: [] })),
     selectColor(color) {
