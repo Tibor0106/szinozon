@@ -60,6 +60,7 @@ export const GameProvider = ({ children }) => {
     }
     return key;
   }
+  const [felfed, setFelfed] = useState(Array(4).fill(0));
   const defaultGameData = {
     selectedColors: getRandomColors(),
     maxTry: 11,
@@ -81,7 +82,7 @@ export const GameProvider = ({ children }) => {
       if (this.trys[this.currentStep].colors.length == 4) {
         if (this.maxTry - 1 == this.currentStep) {
           this.gameEnd = true;
-          this.gameEndMessage = "VESZTESSSS!";
+          this.gameEndMessage = "Vesztes!";
           return;
         }
         var res = this.evalCurrent(this.trys[this.currentStep].colors);
@@ -140,7 +141,7 @@ export const GameProvider = ({ children }) => {
   }, [dataChanged]);
   return (
     <GameContext.Provider
-      value={{ Colors, Ready, GameData, dataChanged, selected }}>
+      value={{ Colors, Ready, GameData, dataChanged, selected, felfed }}>
       {children}
     </GameContext.Provider>
   );

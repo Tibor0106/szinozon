@@ -4,7 +4,7 @@ import Ball from "./Components/Ball";
 import { ModalContext } from "./Providers/ModalProvider";
 import Cookies from "js-cookie";
 function Game() {
-  const { Colors, Ready, GameData, dataChanged, selected } =
+  const { Colors, Ready, GameData, dataChanged, selected, felfed } =
     useContext(GameContext);
   const handleSelectColor = (color) => {
     console.log(color);
@@ -46,10 +46,9 @@ function Game() {
 
             <div>
               <div className="row mt-2">
-                <div className="col-1 ms-4 mini"></div>
-                <div className="col-1 ms-4 mini"></div>
-                <div className="col-1 ms-4 mini"></div>
-                <div className="col-1 ms-4 mini"></div>
+                {felfed.map(i => (
+                  <div className="col-1 ms-4 mini"><Ball ball={i}/></div>
+                ))}
               </div>
             </div>
             <div className="row mt-4 g-0">
