@@ -9,19 +9,19 @@ import { GameProvider } from "./Providers/GameProvider";
 import "./Style/Style.css";
 import { ModalContext } from "./Providers/ModalProvider";
 import { ModalProvider } from "./Providers/ModalProvider";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const {Modal} = useContext(ModalContext);
 
 root.render(
   
   <BrowserRouter>
     <Routes>
     <ModalProvider> 
-      <Modal/>
       <Route
         path="/"
         element={
           <GameProvider>
+            
             <Game />
           </GameProvider>
         }

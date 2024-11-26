@@ -15,7 +15,7 @@ function Game() {
     1: "white",
     2: "black",
   };
-  const {CreateModal, CloseModal} = useContext(ModalContext);
+  const {CreateModal, CloseModal, Modal} = useContext(ModalContext);
 
   const Rules = () => {
     return (
@@ -125,6 +125,7 @@ function Game() {
           </div>
         </div>
       </div>
+      <Modal/>
     </>
   );
 }
