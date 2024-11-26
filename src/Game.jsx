@@ -18,6 +18,11 @@ function Game() {
   const {CreateModal, CloseModal, Modal} = useContext(ModalContext);
 
   const Rules = () => {
+
+    const Accept = () => {
+      Cookies.set("rules_readed", true);
+      CloseModal();
+    }
     return (
       <h1>szabalyzat</h1>
 
@@ -26,7 +31,7 @@ function Game() {
 
   useEffect(() => {
     var rulesReaded = Cookies.get("rules_readed");
-    if(rulesReaded == null) CreateModal("", Rules, true)
+    if(rulesReaded == null) CreateModal("Szabályzat", Rules, true)
    
   }, [])
   return (

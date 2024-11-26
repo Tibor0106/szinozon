@@ -13,22 +13,20 @@ import { ModalProvider } from "./Providers/ModalProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
+  <ModalProvider><BrowserRouter>
+  <Routes>
   
-  <BrowserRouter>
-    <Routes>
-    <ModalProvider> 
-      <Route
-        path="/"
-        element={
-          <GameProvider>
-            
-            <Game />
-          </GameProvider>
-        }
-      /></ModalProvider>
-     
-    </Routes>
-  </BrowserRouter>
+    <Route
+      path="/"
+      element={
+        <GameProvider>   
+          <Game />
+        </GameProvider>
+      }
+    />
+  </Routes>
+</BrowserRouter></ModalProvider>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
