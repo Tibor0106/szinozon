@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { ModalContext, ModalProvider } from "./ModalProvider";
 
 export const GameContext = createContext();
 
@@ -50,6 +51,7 @@ export const GameProvider = ({ children }) => {
     }
     return colors;
   };
+  const {CreateModal, CloseModal} = useContext(ModalContext)
   function generateRandomKey(length = 10) {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -127,6 +129,7 @@ export const GameProvider = ({ children }) => {
     console.log(GameData);
   };
   const selected = (color) => {
+    if(felfed[0].name != null) return;
     try {
       GameData.selectColor(color);
       setDataChanged(generateRandomKey());
@@ -136,12 +139,17 @@ export const GameProvider = ({ children }) => {
   };
   useEffect(() => {
     if (GameData.gameEnd) {
-      alert(GameData.gameEndMessage);
+      setFelfed(GameData.selectedColors);
+      CreateModal("Játék vége!", <h3 className="fw-bold text-center">{GameData.gameEndMessage}</h3>, true)
     }
   }, [dataChanged]);
+
+  const Feladas = () => {
+    setFelfed(GameData.selectedColors);
+  }
   return (
     <GameContext.Provider
-      value={{ Colors, Ready, GameData, dataChanged, selected, felfed }}>
+      value={{ Colors, Ready, GameData, dataChanged, selected, felfed, Feladas }}>
       {children}
     </GameContext.Provider>
   );
