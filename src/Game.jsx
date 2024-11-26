@@ -1,6 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GameContext } from "./Providers/GameProvider";
 import Ball from "./Components/Ball";
+import { ModalContext } from "./Providers/ModalProvider";
+import Cookies from "js-cookie";
 function Game() {
   const { Colors, Ready, GameData, dataChanged, selected } =
     useContext(GameContext);
@@ -13,9 +15,23 @@ function Game() {
     1: "white",
     2: "black",
   };
+  const {CreateModal, CloseModal} = useContext(ModalContext);
+
+  const Rules = () => {
+    return (
+      <h1>szabalyzat</h1>
+
+    )
+  }
+
+  useEffect(() => {
+    var rulesReaded = Cookies.get("rules_readed");
+    if(rulesReaded == null) CreateModal("", Rules, true)
+   
+  }, [])
   return (
     <>
-      <div className="d-none">{dataChanged} ihuih</div>
+      <div className="d-none">{dataChanged} </div>
       <div className="container">
         <div className="row game">
           <div className="col-sm-3 mx-auto">

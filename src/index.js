@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
@@ -7,10 +7,17 @@ import reportWebVitals from "./reportWebVitals";
 import Game from "./Game";
 import { GameProvider } from "./Providers/GameProvider";
 import "./Style/Style.css";
+import { ModalContext } from "./Providers/ModalProvider";
+import { ModalProvider } from "./Providers/ModalProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const {Modal} = useContext(ModalContext);
+
 root.render(
+  
   <BrowserRouter>
     <Routes>
+    <ModalProvider> 
+      <Modal/>
       <Route
         path="/"
         element={
@@ -18,7 +25,8 @@ root.render(
             <Game />
           </GameProvider>
         }
-      />
+      /></ModalProvider>
+     
     </Routes>
   </BrowserRouter>
 );
